@@ -42,8 +42,12 @@
     </a>
 </div>
 <div class="flex justify-end">
-    <img src="{{ asset('logo.png') }}" alt="" style="background-color: transparent; width: 30%; border-radius: 50%;">
+    <img src="{{ asset('logo.avif') }}" alt="" style="background-color: transparent; width: 30%; border-radius: 10%;">
 </div>
+
+<footer class="py-4 text-center text-gray-500 text-sm">
+    &copy; Javier Teheran Magallanez {{ date('Y') }}
+</footer>
 
                 </div>
             </div>
