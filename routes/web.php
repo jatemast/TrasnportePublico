@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/compras',[comprasControllers::class,'index'])->name('compras.index');
     Route::get('/compras/create',[comprasControllers::class,'create'])->name('compras.create');
+    Route::post('/compras',[comprasControllers::class,'store'])->name('compras.store');
 });
 
 require __DIR__.'/auth.php';

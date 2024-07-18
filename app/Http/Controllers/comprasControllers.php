@@ -25,4 +25,21 @@ class comprasControllers extends Controller
         return view('compras.create');
 
     }
+
+    public function store(Request $request){
+
+        $request->validate([
+            'idTargeta' => 'required',
+            'nombre' => 'required',
+            'cedula' => 'required',
+            'saldo' => 'required',
+        ]);
+
+        $targetas = new Targetas();
+        $targetas->fill($request->all());
+        $targetas->save();
+
+        return redirect()->route('compras.index');
+
+    }
 }
