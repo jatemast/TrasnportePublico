@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/compras',[comprasControllers::class,'index'])->name('compras.index');
     Route::get('/compras/create',[comprasControllers::class,'create'])->name('compras.create');
     Route::post('/compras',[comprasControllers::class,'store'])->name('compras.store');
+    Route::get('/compras/{id}/edit',[comprasControllers::class,'edit'])->name('compras.edit');
+    Route::put('/compras/{id}',[comprasControllers::class,'update'])->name('compras.update');
+    Route::delete('/compras/{id}',[comprasControllers::class,'destroy'])->name('compras.destroy');
 });
 
 require __DIR__.'/auth.php';

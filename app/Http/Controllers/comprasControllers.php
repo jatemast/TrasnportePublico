@@ -42,4 +42,40 @@ class comprasControllers extends Controller
         return redirect()->route('compras.index');
 
     }
+   public function edit($id){
+
+    $targetas = Targetas::find($id);
+    return view('compras.edit',compact('targetas'));
+
+   }
+
+
+   public function update(Request $request, $id){
+
+    $request->validate([
+        'idTargeta' => 'required',
+        'nombre' => 'required',
+        'cedula' => 'required',
+        'saldo' => 'required',
+    ]);
+
+    $targetas = Targetas::find($id);
+    $targetas->fill($request->all());
+    $targetas->save();
+
+    return redirect()->route('compras.index');
+
+   }
+
+
+   public function destroy($id){
+
+    $targetas = Targetas::find($id);
+    $targetas->delete();
+
+    return redirect()->route('compras.index');
+
+   }
+
+
 }
