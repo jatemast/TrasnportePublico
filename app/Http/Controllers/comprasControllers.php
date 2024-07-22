@@ -76,6 +76,46 @@ class comprasControllers extends Controller
     return redirect()->route('compras.index');
 
    }
+   public function buscar(Request $request)
+   {
+       $cedulaOrId = $request->input('q');
+
+       $targetas = Targetas::where('cedula', $cedulaOrId)
+                           ->orWhere('idTargeta', $cedulaOrId)
+                           ->get();
+
+       return view('compras.index', compact('targetas'));
+   }
+
+
+
+
+   public function recargar(Request $request)
+   {
+       $codigo = $request->input('codigo');
+       $nuevoSaldo = $request->input('saldo-recarga');
+
+       // Buscar la tarjeta por su código
+       $targeta = Targetas::where('idTargeta', $codigo)->first();
+
+       if ($targeta) {
+           // Si la tarjeta existe, sumar el nuevo saldo al saldo existente
+           $targeta->saldo += $nuevoSaldo;
+           $targeta->save();
+       } else {
+           // Si la tarjeta no existe, crear una nueva
+           $targeta = new Targetas();
+           $targeta->idTargeta = $codigo;
+           // Aquí puedes llenar otros campos si es necesario
+           $targeta->saldo = $nuevoSaldo;
+           $targeta->save();
+       }
+
+       return redirect()->route('compras.index');
+   }
+
+
+
 
 
 }
