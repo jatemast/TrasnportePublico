@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4 py-8 flex flex-wrap">
         <div class="max-w-3xl mx-auto w-full md:w-2/3 pr-8">
             <div>
-                <h1 class="text-2xl font-bold mb-4">Actualizar usuario</h1>
+                <h1 class="text-2xl font-bold mb-4">Crear usuario o targeta</h1>
                 <form action="{{ route('compras.store') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @csrf
                     <div class="space-y-4">
