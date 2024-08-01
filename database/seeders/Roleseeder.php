@@ -15,13 +15,17 @@ class Roleseeder extends Seeder
      */
     public function run(): void
     {
-        
-     $role1 =   Role::create(['bame' => 'Admin']);
-     $role2=  Role::create(['bame' => 'Vendedor']);
+    
+    $role1=  Role::create(['name' => 'admin']);
+      
+     $role2=  Role::create(['name' => 'Vendedor']);
 
 
-     Permission::create(['name'=>'recargar.recarcarTarjetas']);
-     Permission::create(['compras.buscar.BuscarUsuario']);
-     Permission::create(['compras.edit.ActualizarUsuario']);
+     Permission::create(['name'=>'vendedor.recarcarTarjetas']);
+     Permission::create(['name'=>'admin.Actualizarusuario'])->syncRoles([$role1]);
+
+
+     
+   
     }
 }
